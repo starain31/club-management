@@ -4,6 +4,8 @@ import App from "./App";
 
 test("Render Club Management header.", () => {
   render(<App />);
-  const linkElement = screen.getByText(/Heading/i);
-  expect(linkElement).toBeInTheDocument();
+  const heading = screen.getByTestId(/heading/i);
+  expect(heading).toBeInTheDocument();
 });
+
+
