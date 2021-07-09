@@ -5,7 +5,7 @@ import { Members } from "./Members";
 function App() {
   return (
     <div>
-      <Heading />
+      <Heading title={`Club Management`}/>
       <Members />
     </div>
   );
