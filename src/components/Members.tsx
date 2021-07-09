@@ -2,7 +2,7 @@ import React from "react";
 import { Member, MemberType } from "./Member";
 
 type MembersProps = {
-  members: MemberType[];
+  members?: MemberType[];
 };
 
 export function Members({ members = [] }: MembersProps) {
