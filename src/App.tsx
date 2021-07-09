@@ -1,13 +1,13 @@
 import React from "react";
 
-export function Heading() {
-  return <h1>Club Management</h1>;
+export function Heading({ title }: { title: string }) {
+  return <h1>{title}</h1>;
 }
 
 function App() {
   return (
     <div>
-      <Heading />
+      <Heading title={`Club Management`} />
     </div>
   );
 }

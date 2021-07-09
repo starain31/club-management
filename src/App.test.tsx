@@ -9,7 +9,13 @@ test('Render Club Management header.', () => {
 });
 
 test('Render "Heading"', () => {
-  render(<Heading />);
+  render(<Heading title={`Club Management`}/>);
+  const linkElement = screen.getByText(/Club Management/i);
+  expect(linkElement).toBeInTheDocument();
+});
+
+test('Render "Heading" with argument', () => {
+  render(<Heading title={`Club Management`}/>);
   const linkElement = screen.getByText(/Club Management/i);
   expect(linkElement).toBeInTheDocument();
 });
