@@ -1,6 +1,6 @@
 import React from "react";
-import { Heading } from "./Heading";
-import { Members } from "./Members";
+import { Heading } from "./heading/Heading";
+import { Members } from "./member/Members";
 
 function App() {
   return (
