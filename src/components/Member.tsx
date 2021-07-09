@@ -3,6 +3,7 @@ import React from "react";
 export type MemberType = {
   name: string;
   born: string;
+  bio: string;
   id: string;
 };
 
@@ -13,6 +14,7 @@ export function Member({ member }: MemberProps) {
     <div data-testid="member">
       <h1>{member.name}</h1>
       <h1>{member.born}</h1>
+      <p>{member.bio}</p>
     </div>
   );
 }
