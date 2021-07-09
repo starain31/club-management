@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Members } from "./Members";
+import {MemberType} from "./Member";
 
 test("Members should be listed", () => {
   const members = [
@@ -11,7 +12,7 @@ test("Members should be listed", () => {
       name: "Edsger W. Dijkstra",
       id: "2",
     },
-  ];
+  ] as MemberType[];
 
   render(<Members members={members} />);
 
