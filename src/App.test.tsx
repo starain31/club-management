@@ -4,13 +4,13 @@ import App, {Heading} from './App';
 
 test('Render Club Management header.', () => {
   render(<App />);
-  const linkElement = screen.getByText(/Club Management/i);
+  const linkElement = screen.getByText(/Heading/i);
   expect(linkElement).toBeInTheDocument();
 });
 
 test('Render "Heading"', () => {
-  render(<Heading title={`Club Management`}/>);
-  const linkElement = screen.getByText(/Club Management/i);
+  render(<Heading/>);
+  const linkElement = screen.getByText(/Heading/i);
   expect(linkElement).toBeInTheDocument();
 });
 
