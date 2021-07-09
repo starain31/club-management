@@ -1,20 +1,16 @@
 import React from "react";
-
-type MemberType = {
-  name: string;
-  id: string;
-};
+import { Member, MemberType } from "./Member";
 
 type MembersProps = {
   members: MemberType[];
 };
 
-export function Members({ members = []}: MembersProps) {
-  return <div data-testid="members">
-    {
-      members.map( (member) =>
-          <div key={member.id} data-testid='member'>Member</div>
-      )
-    }
-  </div>;
+export function Members({ members = [] }: MembersProps) {
+  return (
+    <div data-testid="members">
+      {members.map((member) => (
+        <Member key={member.id} />
+      ))}
+    </div>
+  );
 }
