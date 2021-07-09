@@ -1,9 +1,13 @@
 import React from "react";
 
+export function Heading() {
+  return <h1>Club Management</h1>;
+}
+
 function App() {
   return (
     <div>
-      <h1>Club Management</h1>
+      <Heading />
     </div>
   );
 }
