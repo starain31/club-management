@@ -8,5 +8,9 @@ export type MemberType = {
 type MemberProps = { member: MemberType };
 
 export function Member({ member }: MemberProps) {
-  return <div data-testid="member">Member</div>;
+  return (
+    <div data-testid="member">
+      <h1>{member.name}</h1>
+    </div>
+  );
 }

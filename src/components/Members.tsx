@@ -9,7 +9,7 @@ export function Members({ members = [] }: MembersProps) {
   return (
     <div data-testid="members">
       {members.map((member) => (
-        <Member key={member.id} />
+        <Member key={member.id} member={member}/>
       ))}
     </div>
   );
