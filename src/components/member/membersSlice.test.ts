@@ -60,4 +60,8 @@ describe('ADD_MEMBER', () => {
   });
 });
 
+describe('DELETE_MEMBER', () => {
+
+});
+
 
