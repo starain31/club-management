@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { store } from "./membersSlice";
+import {UpdateMember} from "../update-member/UpdateMember";
 
 export type MemberType = {
   name: string;
@@ -11,6 +12,7 @@ export type MemberType = {
 type MemberProps = { member: MemberType };
 
 export function Member({ member }: MemberProps) {
+  const [editActive, setEditActive] = useState(false);
   return (
     <div data-testid="member">
       <h1>{member.name}</h1>
@@ -23,6 +25,8 @@ export function Member({ member }: MemberProps) {
       >
         DELETE
       </button>
+      <button onClick={() => setEditActive(!editActive)}>EDIT</button>
+      {editActive && <UpdateMember member={member} />}
     </div>
   );
 }
