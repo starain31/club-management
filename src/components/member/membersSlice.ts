@@ -1,4 +1,5 @@
 import { MemberType } from "./Member";
+import { createStore } from "redux";
 
 type MembersState = MemberType[];
 type ActionType = AddMemberAction | DeleteMemberAction | UpdateMemberAction;
@@ -39,3 +40,5 @@ export const members = (state: MembersState = [], action: ActionType) => {
       return state;
   }
 };
+
+export const store = createStore(members);
