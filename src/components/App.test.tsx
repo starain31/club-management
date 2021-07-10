@@ -15,3 +15,9 @@ test("Render Members component", () => {
   const members = screen.getByTestId(/members/i);
   expect(members).toBeInTheDocument();
 });
+
+test("Render AddMember component", () => {
+    render(<App/>);
+
+    expect(screen.getByTestId('add-member')).toBeInTheDocument();
+})
