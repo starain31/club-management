@@ -1,4 +1,5 @@
 import React from "react";
+import { store } from "./membersSlice";
 
 export type MemberType = {
   name: string;
@@ -15,6 +16,13 @@ export function Member({ member }: MemberProps) {
       <h1>{member.name}</h1>
       <h1>{member.born}</h1>
       <p>{member.bio}</p>
+      <button
+        onClick={() =>
+          store.dispatch({ type: "DELETE_MEMBER", payload: member.id })
+        }
+      >
+        DELETE
+      </button>
     </div>
   );
 }
