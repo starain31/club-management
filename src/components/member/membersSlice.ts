@@ -22,6 +22,8 @@ export const members = (state: MembersState = [], action: ActionType) => {
           ]
       case "DELETE_MEMBER":
           return state.filter((member) => member.id !== action.payload);
+        default:
+            return state;
     }
 
 }
