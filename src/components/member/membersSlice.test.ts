@@ -61,7 +61,19 @@ describe('ADD_MEMBER', () => {
 });
 
 describe('DELETE_MEMBER', () => {
+    test('member should delete from state', () => {
 
+      const state_before_delete_member = [
+        {
+          name: "Alan Kay",
+          born: "May 17, 1940",
+          bio: "Alan Curtis Kay is an American computer scientist.",
+          id: "1",
+        },
+      ];
+
+      expect(members(state_before_delete_member, { type: "DELETE_MEMBER", payload: "1" })).toEqual([]);
+    })
 });
 
 

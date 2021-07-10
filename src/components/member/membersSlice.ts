@@ -1,14 +1,27 @@
 import {MemberType} from "./Member";
 
 type MembersState = MemberType[];
-type ActionType = {
-    type: string;
-    payload?: MemberType;
+type ActionType = AddMemberAction | DeleteMemberAction;
+
+type AddMemberAction = {
+    type: 'ADD_MEMBER';
+    payload: MemberType;
 }
 
-export const members = (state: MembersState, action: ActionType) => {
-    return [
-        ...state,
-        action.payload
-    ]
+type DeleteMemberAction = {
+    type: 'DELETE_MEMBER';
+    payload: string;
+}
+
+export const members = (state: MembersState = [], action: ActionType) => {
+    switch (action.type) {
+      case "ADD_MEMBER":
+          return [
+              ...state,
+              action.payload
+          ]
+      case "DELETE_MEMBER":
+          return state.filter((member) => member.id !== action.payload);
+    }
+
 }
