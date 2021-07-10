@@ -43,8 +43,7 @@ export const AddMember = () => {
 
       <label htmlFor="bio">
         Born
-        <input
-          type={`text`}
+        <textarea
           id={`bio`}
           value={bio}
           onChange={(e) => setBio(e.target.value)}
