@@ -60,7 +60,7 @@ server.post("/add", (req, res) => {
 
   members = [...members, newMember];
 
-  res.send(members);
+  res.send(newMember);
 });
 
 server.listen(port, () => {

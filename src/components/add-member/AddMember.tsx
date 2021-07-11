@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { store } from "../member/membersSlice";
 import { Button, Grid, TextField } from "@material-ui/core";
+import { MemberType } from "../member/Member";
 
 export const AddMember = () => {
   const [name, setName] = useState("");
@@ -10,10 +11,20 @@ export const AddMember = () => {
   const handleSubmit = (event: any) => {
     event.preventDefault();
 
-    store.dispatch({
-      type: "ADD_MEMBER",
-      payload: { id: String(store.getState().length), name, bio, born },
-    });
+    fetch("/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, bio, born }),
+    })
+      .then((res) => res.json())
+      .then((member: MemberType) => {
+        store.dispatch({
+          type: "ADD_MEMBER",
+          payload: member,
+        });
+      });
 
     setName("");
     setBorn("");
