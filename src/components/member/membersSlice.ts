@@ -2,7 +2,7 @@ import { MemberType } from "./Member";
 import { createStore } from "redux";
 
 type MembersState = MemberType[];
-type ActionType = AddMemberAction | DeleteMemberAction | UpdateMemberAction;
+type ActionType = AddMemberAction | DeleteMemberAction | UpdateMemberAction | ResetMembersAction;
 
 type AddMemberAction = {
   type: "ADD_MEMBER";
@@ -13,6 +13,11 @@ type DeleteMemberAction = {
   type: "DELETE_MEMBER";
   payload: string;
 };
+
+type ResetMembersAction = {
+  type: 'RESET_MEMBERS';
+  payload: MemberType[];
+}
 
 type UpdateMemberAction = {
   type: "UPDATE_MEMBER";
@@ -26,6 +31,8 @@ type UpdateMemberAction = {
 
 export const members = (state: MembersState = [], action: ActionType) => {
   switch (action.type) {
+    case "RESET_MEMBERS":
+      return action.payload;
     case "ADD_MEMBER":
       return [...state, action.payload];
     case "DELETE_MEMBER":

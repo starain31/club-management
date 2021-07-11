@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
-import {store} from "./components/member/membersSlice";
+import { store } from "./components/member/membersSlice";
 
 const render = () => {
   ReactDOM.render(
@@ -13,7 +13,15 @@ const render = () => {
     document.getElementById("root")
   );
 };
+
 store.subscribe(render);
+
+fetch("/members")
+  .then((response) => response.json())
+  .then((members) => {
+    store.dispatch({ type: "RESET_MEMBERS", payload: members });
+  });
+
 render();
 
 // If you want to start measuring performance in your app, pass a function
