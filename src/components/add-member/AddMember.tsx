@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { store } from "../member/membersSlice";
+import { Button, Grid, TextField } from "@material-ui/core";
 
 export const AddMember = () => {
   const [name, setName] = useState("");
@@ -21,36 +22,46 @@ export const AddMember = () => {
 
   return (
     <form data-testid={`add-member`} onSubmit={handleSubmit}>
-      <label htmlFor="name">
-        Name
-        <input
-          type={`text`}
-          id={`name`}
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </label>
-
-      <label htmlFor="born">
-        Born
-        <input
-          type={`text`}
-          id={`born`}
-          value={born}
-          onChange={(e) => setBorn(e.target.value)}
-        />
-      </label>
-
-      <label htmlFor="bio">
-        Born
-        <textarea
-          id={`bio`}
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
-        />
-      </label>
-
-      <input type={`submit`} value={`ADD`} />
+      <Grid container spacing={3}>
+        <Grid item xs={2}>
+          <TextField
+            id="name"
+            label="Name"
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </Grid>
+        <Grid item xs={2}>
+          <TextField
+            type={`date`}
+            id="born"
+            label="Born"
+            value={born}
+            required
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={(e) => setBorn(e.target.value)}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            id="bio"
+            label="Bio"
+            multiline
+            value={bio}
+            variant="outlined"
+            required
+            onChange={(e) => setBio(e.target.value)}
+          />
+        </Grid>
+        <Grid item xs={3}>
+          <Button type={`submit`} color={"primary"}>
+            ADD MEMBER
+          </Button>
+        </Grid>
+      </Grid>
     </form>
   );
 };
