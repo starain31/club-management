@@ -66,39 +66,3 @@ export function UpdateMember({ member }: { member: MemberType }) {
     </form>
   );
 }
-
-//   return (
-//     <form data-testid={`add-member`} onSubmit={handleSubmit}>
-//       <label htmlFor="name">
-//         Name
-//         <input
-//           type={`text`}
-//           id={`name`}
-//           value={name}
-//           onChange={(e) => setName(e.target.value)}
-//         />
-//       </label>
-//
-//       <label htmlFor="born">
-//         Born
-//         <input
-//           type={`text`}
-//           id={`born`}
-//           value={born}
-//           onChange={(e) => setBorn(e.target.value)}
-//         />
-//       </label>
-//
-//       <label htmlFor="bio">
-//         Born
-//         <textarea
-//           id={`bio`}
-//           value={bio}
-//           onChange={(e) => setBio(e.target.value)}
-//         />
-//       </label>
-//
-//       <input type={`submit`} value={`UPDATE`} />
-//     </form>
-//   );
-// }
