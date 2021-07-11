@@ -38,7 +38,7 @@ export function Member({ member }: MemberProps) {
   return (
     <ListItem alignItems="flex-start" data-testid="member">
       <ListItemAvatar>
-        <Avatar alt="Remy Sharp" src="/favicon.ico" />
+        <Avatar alt="Remy Sharp" src={`/profile_picture/${member.id}`} />
       </ListItemAvatar>
       <ListItemText
         primary={member.name + " - " + member.born}

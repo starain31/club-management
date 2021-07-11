@@ -54,7 +54,7 @@ server.post("/add", (req, res) => {
   if (req.files && req.files.picture !== null) {
     const picture = req.files.picture;
     if ("mv" in picture) {
-      picture.mv(`${__dirname}/client/public/profile_picture/${newMember.id}`);
+      picture.mv(`${__dirname}/public/profile_picture/${newMember.id}`);
     }
   }
 

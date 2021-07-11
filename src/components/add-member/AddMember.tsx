@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { store } from "../member/membersSlice";
 import { Button, Grid, TextField } from "@material-ui/core";
 import { MemberType } from "../member/Member";
@@ -7,16 +7,31 @@ export const AddMember = () => {
   const [name, setName] = useState("");
   const [born, setBorn] = useState("");
   const [bio, setBio] = useState("");
+  const [picture, setPicture] = useState<any>(null);
+
+  function changePictureState(e: ChangeEvent<HTMLInputElement>) {
+    if (e.target.files && e.target.files.length !== 0) {
+      setPicture(e.target.files[0]);
+    }
+  }
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
 
+    const member = new FormData();
+    member.append("picture", picture);
+    member.append("name", name);
+    member.append("born", born);
+    member.append("bio", bio);
+
+    setName("");
+    setBio("");
+    setBorn("");
+    setPicture(null);
+
     fetch("/add", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, bio, born }),
+      body: member,
     })
       .then((res) => res.json())
       .then((member: MemberType) => {
@@ -25,10 +40,6 @@ export const AddMember = () => {
           payload: member,
         });
       });
-
-    setName("");
-    setBorn("");
-    setBio("");
   };
 
   return (
@@ -66,6 +77,15 @@ export const AddMember = () => {
             variant="outlined"
             required
             onChange={(e) => setBio(e.target.value)}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <input
+            accept="image/*"
+            id="picture"
+            multiple
+            type="file"
+            onChange={changePictureState}
           />
         </Grid>
         <Grid item xs={3}>
