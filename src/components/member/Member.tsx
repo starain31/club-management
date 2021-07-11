@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import { store } from "./membersSlice";
-import {UpdateMember} from "../update-member/UpdateMember";
+import { UpdateMember } from "../update-member/UpdateMember";
+import {
+  Avatar,
+  IconButton,
+  ListItem,
+  ListItemAvatar,
+  ListItemIcon,
+  ListItemText,
+} from "@material-ui/core";
+import { Delete, Edit } from "@material-ui/icons";
 
 export type MemberType = {
   name: string;
@@ -14,19 +23,34 @@ type MemberProps = { member: MemberType };
 export function Member({ member }: MemberProps) {
   const [editActive, setEditActive] = useState(false);
   return (
-    <div data-testid="member">
-      <h1>{member.name}</h1>
-      <h1>{member.born}</h1>
-      <p>{member.bio}</p>
-      <button
-        onClick={() =>
-          store.dispatch({ type: "DELETE_MEMBER", payload: member.id })
-        }
-      >
-        DELETE
-      </button>
-      <button onClick={() => setEditActive(!editActive)}>EDIT</button>
-      {editActive && <UpdateMember member={member} />}
-    </div>
+    <ListItem alignItems="flex-start" data-testid="member">
+      <ListItemAvatar>
+        <Avatar alt="Remy Sharp" src="/favicon.ico" />
+      </ListItemAvatar>
+      <ListItemText
+        primary={member.name + " - " + member.born}
+        secondary={member.bio}
+      />
+      <ListItemIcon>
+        <IconButton
+          edge="end"
+          aria-label="comments"
+          onClick={() =>
+            store.dispatch({ type: "DELETE_MEMBER", payload: member.id })
+          }
+        >
+          <Delete />
+        </IconButton>
+
+        <IconButton
+          edge="end"
+          aria-label="comments"
+          onClick={() => setEditActive(!editActive)}
+        >
+          <Edit />
+        </IconButton>
+        {editActive && <UpdateMember member={member} />}
+      </ListItemIcon>
+    </ListItem>
   );
 }

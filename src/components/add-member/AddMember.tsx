@@ -22,6 +22,7 @@ export const AddMember = () => {
 
   return (
     <form data-testid={`add-member`} onSubmit={handleSubmit}>
+      <h2>Add Member</h2>
       <Grid container spacing={3}>
         <Grid item xs={2}>
           <TextField
@@ -57,7 +58,7 @@ export const AddMember = () => {
           />
         </Grid>
         <Grid item xs={3}>
-          <Button type={`submit`} color={"primary"}>
+          <Button type={`submit`} variant={`contained`} color={"primary"}>
             ADD MEMBER
           </Button>
         </Grid>
