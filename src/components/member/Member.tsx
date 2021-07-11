@@ -18,6 +18,19 @@ export type MemberType = {
   id: string;
 };
 
+const onDelete = ({ id }: { id: string }) => {
+  console.log({ id });
+  fetch("/delete", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ id }),
+  }).then(() => {
+    store.dispatch({ type: "DELETE_MEMBER", payload: id });
+  });
+};
+
 type MemberProps = { member: MemberType };
 
 export function Member({ member }: MemberProps) {
@@ -35,9 +48,7 @@ export function Member({ member }: MemberProps) {
         <IconButton
           edge="end"
           aria-label="comments"
-          onClick={() =>
-            store.dispatch({ type: "DELETE_MEMBER", payload: member.id })
-          }
+          onClick={() => onDelete({ id: member.id })}
         >
           <Delete />
         </IconButton>

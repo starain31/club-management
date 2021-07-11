@@ -43,9 +43,9 @@ server.get("/members", (req, res) => {
   res.send(members);
 });
 
-server.get("/delete", (req, res) => {
-  members = members.filter((member) => member.id !== Number(req.query.id));
-  res.send(members);
+server.post("/delete", (req, res) => {
+  members = members.filter((member) => member.id !== Number(req.body.id));
+  res.send(`Members Deleted`);
 });
 
 server.post("/add", (req, res) => {
